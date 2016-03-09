@@ -1,0 +1,27 @@
+<ion-menu id="leftMenu" [content]="content">
+
+	<ion-toolbar primary>
+		<ion-buttons start>
+			<button menuClose (click)="importAll()">
+				<ion-icon name="download"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title>All</ion-title>
+		<ion-buttons end>
+			<button (click)="shareAll()">
+				<ion-icon name="share"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-toolbar>
+
+	<ion-content>
+		<ion-list>
+			<button ion-item menuClose *ngFor="#n of notes; #i = index" (click)="openNote(i)">
+				{{getTitle(n)}}
+			</button>
+		</ion-list>
+	</ion-content>
+
+</ion-menu>
+
+<ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>

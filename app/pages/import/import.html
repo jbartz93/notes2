@@ -1,0 +1,14 @@
+<ion-navbar *navbar primary>
+	<ion-title>
+		Import
+	</ion-title>
+</ion-navbar>
+<ion-content class="importNotes">
+	<textarea class="note-content" [(ngModel)]="content" placeholder="Paste export data here"></textarea>
+</ion-content>
+
+<ion-toolbar position="bottom" class="buttonbar">
+	<button clear full (click)="finish()">
+		<ion-icon name="checkmark" secondary></ion-icon>
+	</button>
+</ion-toolbar>

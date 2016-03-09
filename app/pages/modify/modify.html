@@ -1,0 +1,29 @@
+<ion-navbar *navbar primary>
+	<ion-buttons end>
+		<button light (click)="setTitle()">
+			<span *ngIf="!note.title">Edit title</span>
+			<ion-icon name="create" *ngIf="note.title"></ion-icon>
+		</button>
+	</ion-buttons>
+	<ion-title>
+		{{note.title}}
+	</ion-title>
+</ion-navbar>
+<ion-content class="modify">
+	<textarea class="note-content" [(ngModel)]="note.content" (input)="changed = true"></textarea>
+</ion-content>
+
+<ion-toolbar position="bottom" class="buttonbar">
+	<ion-row>
+		<ion-col>
+			<button clear full (click)="save()" [disabled]="!changed">
+				<div class="save-icon"></div>
+			</button>
+		</ion-col>
+		<ion-col>
+			<button clear full (click)="finish()">
+				<ion-icon name="checkmark" secondary></ion-icon>
+			</button>
+		</ion-col>
+	</ion-row>
+</ion-toolbar>

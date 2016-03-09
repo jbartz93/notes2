@@ -1,0 +1,46 @@
+<ion-navbar *navbar primary>
+  <ion-title>
+    {{notes[activeNote]?.title}}
+  </ion-title>
+  <ion-buttons left>
+	  <button menuToggle>
+		  <ion-icon name="menu"></ion-icon>
+	  </button>
+  </ion-buttons>
+</ion-navbar>
+
+<ion-slides [options]="options" class="home" (change)="slideChange($event.activeIndex)">
+	<ion-slide *ngFor="#note of notes" padding>
+		<ion-scroll scrollY="true">
+			<div class="note-content" *ngFor='#line of note.formatted'>
+				<span>{{line}}</span>&nbsp;
+			</div>
+			<div class="last-edited">{{note.lastEdited}} {{content}}</div>
+		</ion-scroll>
+	</ion-slide>
+</ion-slides>
+
+<ion-toolbar position="bottom" class="buttonbar">
+	<ion-row>
+		<ion-col *ngIf="notes.length">
+			<button clear full (click)="remove()">
+				<ion-icon name="trash" danger></ion-icon>
+			</button>
+		</ion-col>
+		<ion-col *ngIf="notes.length">
+			<button clear full (click)="share()">
+				<ion-icon name="share"></ion-icon>
+			</button>
+		</ion-col>
+		<ion-col *ngIf="notes.length">
+			<button clear full (click)="edit()">
+				<ion-icon name="create" favorite></ion-icon>
+			</button>
+		</ion-col>
+		<ion-col>
+			<button clear full [navPush]="navTo.add">
+				<ion-icon name="add" secondary></ion-icon>
+			</button>
+		</ion-col>
+	</ion-row>
+</ion-toolbar>
